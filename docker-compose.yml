@@ -6,45 +6,45 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 192.168.60.0/24
+        - subnet: 192.168.66.0/24
 
 volumes:
   cs-ansible:
 
 services:
-  cicd:
-    image: agupta73/cicd
+  kdms1:
+    image: agupta73/kdms
     ports:
        - "8095:80"
     networks:
       custom:
-        ipv4_address: 192.168.60.11
+        ipv4_address: 192.168.66.11
     dns: 8.8.8.8
-    container_name: mycicd101
-    hostname: cicd
+    container_name: uikdms1
+    hostname: kdms
     restart: always
     
-  cicd2:
-    image: agupta73/cicd
+  kdms2:
+    image: agupta73/kdms
     ports:
        - "8096:80"
     networks:
       custom:
-        ipv4_address: 192.168.60.12
+        ipv4_address: 192.168.66.12
     dns: 8.8.8.8
-    container_name: mycicd102
-    hostname: cicd
+    container_name: uikdms2
+    hostname: kdms
     restart: always
     
-  cicd_db:
-    image: agupta73/cicd_database
+  kdms_db:
+    image: agupta73/dbkdms
     ports:
       - "3309:3306"
     networks:
       custom:
-        ipv4_address: 192.168.60.13
+        ipv4_address: 192.168.66.13
     dns: 8.8.8.8
-    container_name: mycicd_db101
+    container_name: dbkdms
     volumes:
        - type: bind
          source: /Users/agupta/MySQL_Conf/my.cnf
@@ -52,29 +52,6 @@ services:
        - type: bind
          source: /Users/agupta/MySQL_Data
          target: /var/lib/mysql
-    hostname: cicd_db
-    restart: always
-
-  cicdadmin:
-    image: phpmyadmin/phpmyadmin
-    ports:
-        - "8070:80"
-    networks:
-      custom:
-        ipv4_address: 192.168.60.14
-    dns: 8.8.8.8
-    container_name: mycicdadmin
-    hostname: cicd_admin
+    hostname: kdms_db
     restart: always
     
-  php_ext:
-    image: nanasess/php7-ext-apache
-    ports:
-        - "8097:80"
-    networks:
-      custom:
-        ipv4_address: 192.168.60.15
-    dns: 8.8.8.8
-    container_name: mycicdext
-    hostname: cicd_ext
-    restart: always
