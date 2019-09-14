@@ -15,7 +15,7 @@ services:
   kdms1:
     image: agupta73/kdms
     ports:
-       - "8095:80"
+       - "801:80"
     networks:
       custom:
         ipv4_address: 192.168.66.11
@@ -27,7 +27,7 @@ services:
   kdms2:
     image: agupta73/kdms
     ports:
-       - "8096:80"
+       - "802:80"
     networks:
       custom:
         ipv4_address: 192.168.66.12
@@ -39,7 +39,7 @@ services:
   kdms_db:
     image: agupta73/dbkdms
     ports:
-      - "3309:3306"
+      - "3301:3306"
     networks:
       custom:
         ipv4_address: 192.168.66.13
