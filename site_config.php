@@ -1,7 +1,7 @@
 <?php
 
 // User definded configuration
-$directoryName = "CICD"; //name of main folder
+$directoryName = "cKDMS"; //name of main folder
 $directory_seprator = '/';
 $protocol = 'http://';
 //---------------------------------------
